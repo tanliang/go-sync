@@ -4,7 +4,6 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"io/ioutil"
-	"log"
 	"math/rand"
 	"net/http"
 	"os"
@@ -17,6 +16,7 @@ var syncDir string
 
 func main() {
 
+	// create tmp dir for message storage
 	syncDir, _ = os.Getwd()
 	syncDir += string(os.PathSeparator) + "tmp" + string(os.PathSeparator)
 	if !fileExist(syncDir) {
@@ -35,17 +35,9 @@ func main() {
 	// Echo instance
 	e := echo.New()
 
-	log.Print("=============sync_dir============")
-	log.Print(syncDir)
-
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		//AllowOrigins: []string{"http://9777.in"},
-		AllowOrigins: []string{"*"},
-		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
-	}))
 
 	// Routes
 	e.POST("/go/sync", sync)
@@ -53,9 +45,11 @@ func main() {
 	e.POST("/go/test", test)
 	e.POST("/go", home)
 	e.GET("/go", home)
+	e.File("/", "index.html")
+	e.File("/sync.html", "sync.html")
 
 	// Start server
-	e.Logger.Fatal(e.Start(":9501"))
+	e.Logger.Fatal(e.Start(":8888"))
 }
 
 type ReqSync struct {

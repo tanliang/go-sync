@@ -1,29 +1,15 @@
 # go-sync
-a tiny web service for sending message via qr-code, mainly used in tv box.
+a tiny web service for sending message via qr-code, mainly used for tv box.
 
 # install
-put index.html and sync.html under nginx root dir
-
-# nginx
-set CORS and Reverse Proxy
 ```
-server {
-    ...
-    
-    location /go {
-        add_header Access-Control-Allow-Origin *;
-        add_header Access-Control-Allow-Methods 'GET, POST, OPTIONS';
-        add_header Access-Control-Allow-Headers 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization';
+# on your device
 
-        proxy_pass http://127.0.0.1:9501;
+git clone https://github.com/tanliang/go-sync.git
+cd go-sync
+go build sync.go
+./sync
 
-        if ($request_method = 'OPTIONS') {
-            return 204;
-        }
-    }
-    
-    ...
-}
 ```
 
 # example
