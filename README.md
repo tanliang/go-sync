@@ -2,15 +2,17 @@
 a tiny web service for sending message via qr-code, mainly used for tv box.
 
 # install
+on your device or server
 ```
-# on your device
-
 git clone https://github.com/tanliang/go-sync.git
 cd go-sync
 go build sync.go
 ./sync
-
 ```
+
+# usage
+on your browser && goto
+http://192.168.x.xxx:8888
 
 # example
 http://9777.in
