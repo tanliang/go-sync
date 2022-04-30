@@ -9,6 +9,7 @@ cd go-sync
 go build sync.go
 ./sync
 ```
+you may use supervisord to keep sync running.
 
 # usage
 on your browser && goto
