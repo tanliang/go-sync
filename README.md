@@ -16,7 +16,7 @@ on your browser && goto
 http://192.168.x.xxx:8888
 
 # example
-http://9777.in
+http://tv.88878.top
 
 # 说明
 手机与电视盒子之间同步文本的服务
